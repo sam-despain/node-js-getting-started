@@ -72,7 +72,15 @@ function compute(res, weight, mailType) {
 			}
 			break;
 		case 'First-class package service - Retail':
-			;
+			if (weight <= 4) {
+				rate = 3.8;
+			} else if (weight > 4 && weight <= 8) {
+				rate = 4.6;
+			} else if (weight > 8 && weight <= 12) {
+				rate = 5.3;
+			} else if (weight > 12 && weight <= 13) {
+				rate = 5.9;
+			}
 			break;
 	}
 	
