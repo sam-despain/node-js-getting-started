@@ -1,0 +1,170 @@
+body {
+	font-family: helvetica;
+	background-color: #eee;
+}
+
+form {
+	margin: 10px;
+	padding: 1px;
+	border-radius: 10px;
+}
+img {
+	width: 100%;
+	height: auto;
+}
+.me {
+	max-width: 640px;
+	max-height: 480px;
+}
+.logo {
+	margin: 0px 0px 10px 10px;
+	max-width: 100px;
+	max-height: 100px;
+}
+.navBar {
+	list-style-type: none;
+	margin: 0;
+	padding: 0px;
+	overflow: hidden;
+	border-radius: 5px;
+	background-color: #ccc;
+}
+.footer {
+	padding: 25px;
+	border-radius: 5px;
+	background-color: #ccc;
+	text-align: center;
+}
+.copyright {
+	margin: auto;
+	width: 200px;
+	text-align: center;
+	padding:25px;
+}
+#hd {
+	float: left;
+}
+#hd a, #db {
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+}
+#hd:hover {
+	display: block;
+	transition: .5s;
+}
+.headerLink {
+	color: black;
+	text-decoration: none;
+	text-align: left;
+	padding: 20px;
+	border-radius: 100px;
+	transition: .5s;
+}
+.headerLink:hover .assign:hover button:hover {
+	background-color: #ccc;
+	transition: .5s;
+}
+button {
+	border: none;
+	padding: 10px;
+	border-radius: 5px;
+	margin: 5px;
+	cursor: pointer;
+	outline: none;
+	transition: .5s;
+}
+.contents {
+	max-height: 0;
+	overflow: hidden;
+	transition: 1s;
+}
+p {
+	text-align: left;
+}
+.dropdown {
+	text-align: center;
+	margin: auto;
+	margin-top: 10px;
+	max-width: 640px;
+	max-width: auto;
+}
+h3 {
+	margin: 5px 15px;
+}
+div {
+	background-color: #fff;
+	border: none;
+	border-radius: 5px;
+	margin: 5px;
+	padding: 5px 15px;
+}
+.fittedDiv {
+    display: inline-block;
+}
+
+input {
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+	margin: 5px;
+}
+input:focus {
+	outline: 0;
+}
+input[type=submit] {
+	background-color: #a55;
+	color: white;
+	padding: 10px;
+}
+input[type=number] {
+	width: 110px;
+	cursor: text;
+	text-align: center;
+	background-color: #fff;
+	border-style: solid;
+	border-color: #aaa;
+	border-width: 1px;
+}
+input[type=text], [type=password] {
+	background-color: #fff;
+	border-style: solid;
+	border-color: #aaa;
+	cursor: text;
+	border-width: 1px;
+}
+.radioCheck {
+	height: 25px;
+    width: 25px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	transition: .5s;
+}
+.radioCheck:checked {
+	border: none;
+	background-color: #000;
+	outline:10px;
+	outline-color: #ddd;
+	transition: .5s;
+}
+.submit {
+	padding: 10px 100px 10px 100px;
+}
+#color {
+	background-color: #fff;
+	width: 150px;
+	font-family: monospace;
+}
+
+.me {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+@media screen and (max-width: 600px) {
+	.headerLink {
+		display: block;
+	}
+}
