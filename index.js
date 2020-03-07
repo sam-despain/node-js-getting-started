@@ -74,8 +74,6 @@ function compute(res, weight, mailType) {
 		case 'First-class package service - Retail':
 			;
 			break;
-		default:
-			;
 	}
 	
 	const params = {
