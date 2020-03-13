@@ -6,17 +6,53 @@ express()
   .use(express.static(path.join(__dirname, 'public')))
   .set('views', path.join(__dirname, 'views'))
   .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/index'))
+  .get('/', (req, res) => res.render('pages/home'))
+  .get('/assignments', (req, res) => res.render('pages/assignments'))
+  .get('/node', (req, res) => res.render('pages/index'))
+  .get('/teamactivity09', (req, res) => res.render('pages/mathform'))
+  .get('/math', handleMath)
   .get('/prove09', (req, res) => res.render('pages/postform'))
-  .get('/rate', handleMath)
+  .get('/rate', handleRate)
+  .get('/prove10', (req, res) => res.render('pages/pcshoppe'))
+  .get('prove10', (req, res) => res.render('pages/postform'))
   .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 function handleMath(req, res) {
+	const op = req.query.op;
+	const left = Number(req.query.left);
+	const right = Number(req.query.right);
+	computeMath(res, op, left, right);
+}
+function handleRate(req, res) {
 	const mailType = req.query.mailType;
 	const weight = Number(req.query.weight);
-	compute(res, weight, mailType);
+	computeRate(res, weight, mailType);
 }
-function compute(res, weight, mailType) {
+function computeMath (res, op, left, right) {
+	let result = 0;
+	switch (op) {
+		case '+':
+			result = left + right;
+			break;
+		case '-':
+			result = left - right;
+			break;
+		case '×':
+			result = left * right;
+			break;
+		case '÷':
+			result = left / right;
+			break;
+	}
+	const params = {
+		op: op,
+		left: left,
+		right: right,
+		result: result
+	};
+	res.render('pages/math', params);
+}
+function computeRate(res, weight, mailType) {
 	let rate = 0;
 	
 	switch (mailType) {

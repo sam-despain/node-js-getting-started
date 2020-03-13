@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Postal Rate Calculator</title>
-		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-		<link rel="icon" type="image/svg+xml" href="logo.svg"/>
-		<link rel="shortcut icon" href="favicon.ico"/>
+		<% include ../partials/myHeader %>
 	</head>
 	<body>
 		<h1>Postal Rate Calculator</h1>
 		<form action="/rate" method="get">
-			<p><input style="width:64px" step="0.01" name="weight" type="number">lbs.</p>
+			<p><input style="width:64px" min="0" step="0.01" name="weight" type="number">lbs.</p>
 			<select name="mailType">
 				<option>Letters (stamped)</option>
 				<option>Letters (metered)</option>
@@ -18,5 +15,6 @@
 			</select>
 			<p><input type="submit" value="Postal Rate"></p>
 		</form>
+		<% include ../partials/myFooter %>
 	</body>
 </html>

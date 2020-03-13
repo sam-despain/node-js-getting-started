@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Math</title>
-		<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" />
-		<link rel="icon" type="image/svg+xml" href="logo.svg"/>
-		<link rel="shortcut icon" href="favicon.ico"/>
+		<% include ../partials/myHeader.ejs %>
 	</head>
 	<body>
 		<h1>Math result</h1>
-		<h2><%= left %> <%= operation %> <%= right %> = <b><%= result %></b></h2>
+		<p><%= left %> <%= op %> <%= right %> = <b><%= result %></b></p>
+		<a href="teamactivity09">Back</a>
+		<% include ../partials/myFooter.ejs %>
 	</body>
 </html>
