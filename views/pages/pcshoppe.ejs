@@ -2,9 +2,55 @@
 <html>
 	<head>
 		<% include ../partials/myHeader %>
+		<script>
+			function loadCase() {
+				var xhttp = new XMLHTTPRequest();
+				xhttp.onreadystatechange = function() {
+					if (this.readyState == 4 && this.status == 200) {
+						document.getElementById("test").innerHTML = this.responseText;
+					}
+				};
+				xhttp.open("GET", "/getCase?id=1", true);
+				xhttp.send();
+			}
+		</script>
 	</head>
 	<body>
 		<h1>The PC Shoppe</h1>
+		<form>
+			<p>
+				<button onclick="loadCase()">Casing</button>
+				<p id="test"></p>
+			</p>
+			<p>
+				<button>Cooler</button>
+			</p>
+			<p>
+				<button>CPU</button>
+			</p>
+			<p>
+				<button>Graphics card</button>
+			</p>
+			<p>
+				<button>Monitor</button>
+			</p>
+			<p>
+				<button>Motherboard</button>
+			</p>
+			<p>
+				<button>Operating system</button>
+			</p>
+			<p>
+				<button>Power supply</button>
+			</p>
+			<p>
+				<button>Memory</button>
+			</p>
+			<p>
+				<button>Storage</button>
+			</p>
+			<p><input type="submit"/></p>
+		</form>
 		<% include ../partials/myFooter %>
 	</body>
 </html>

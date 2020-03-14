@@ -61,11 +61,12 @@ img {
 	border-radius: 100px;
 	transition: .5s;
 }
-.headerLink:hover .assign:hover button:hover {
+button:hover {
 	background-color: #ccc;
 	transition: .5s;
 }
 button {
+	background-color: #fff;
 	border: none;
 	padding: 10px;
 	border-radius: 5px;

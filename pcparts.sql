@@ -39,7 +39,8 @@ INSERT INTO motherboard (type, price) VALUES ('Micro-ATX', 99.99);
 INSERT INTO motherboard (type, price) VALUES ('Mini-ITX', 84.99);
 
 CREATE TABLE ram (
-	size int PRIMARY KEY UNIQUE NOT NULL,
+	id serial PRIMARY KEY UNIQUE NOT NULL,
+	size int UNIQUE NOT NULL,
 	price float NOT NULL
 );
 INSERT INTO ram (size, price) VALUES (2, 9.99);
@@ -97,7 +98,8 @@ INSERT INTO casing (type, price) VALUES ('Micro-ATX Mini-tower', 49.99);
 INSERT INTO casing (type, price) VALUES ('Mini-ITX', 99.99);
 
 CREATE TABLE psu (
-	wattage int PRIMARY KEY UNIQUE NOT NULL,
+	id serial PRIMARY KEY UNIQUE NOT NULL,
+	wattage int UNIQUE NOT NULL,
 	price float NOT NULL
 );
 INSERT INTO psu (wattage, price) VALUES (450, 29.99);
@@ -143,3 +145,5 @@ INSERT INTO os (name, price) VALUES ('Windows 10', 119.99);
 INSERT INTO os (name, price) VALUES ('Linux Debian', 0);
 INSERT INTO os (name, price) VALUES ('Linux Ubuntu', 0);
 INSERT INTO os (name, price) VALUES ('Linux Red Hat', 0);
+
+GRANT USAGE, SELECT ON SEQUENCE 
