@@ -4,14 +4,16 @@
 		<% include ../partials/myHeader %>
 		<script>
 			function loadCase() {
-				var xhttp = new XMLHTTPRequest();
+				var xhttp = new XMLHttpRequest();
 				xhttp.onreadystatechange = function() {
 					if (this.readyState == 4 && this.status == 200) {
 						document.getElementById("test").innerHTML = this.responseText;
 					}
 				};
-				xhttp.open("GET", "/getCase?id=1", true);
-				xhttp.send();
+				for (var i = 1; i < 15; i++) {
+					xhttp.open("GET", "/getCase?id=" + i, true);
+					xhttp.send();
+				}
 			}
 		</script>
 	</head>
