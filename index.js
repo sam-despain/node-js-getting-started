@@ -1,34 +1,48 @@
 const express = require('express');
 const path = require('path');
+const caseController = require('./controllers/caseController.js');
+const coolerController = require('./controllers/coolerController.js');
+const cpuController = require('./controllers/cpuController.js');
+const gpuController = require('./controllers/gpuController.js');
+const monitorController = require('./controllers/monitorController.js');
+const motherboardController = require('./controllers/motherboardController.js');
+const osController = require('./controllers/osController.js');
+const psuController = require('./controllers/psuController.js');
+const ramController = require('./controllers/ramController.js');
+const storageController = require('./controllers/storageController.js');
 const PORT = process.env.PORT || 5000;
 
-const { Pool } = require('pg');
-const connectionString = process.env.DATABASE_URL || "postgres://despa3:SuperMario3D@localhost:5432/thepcshoppe";
-const pool = new Pool({connectionString: connectionString});
-
 express()
-  .use(express.static(path.join(__dirname, 'public')))
-  .set('views', path.join(__dirname, 'views'))
-  .set('view engine', 'ejs')
-  .get('/', (req, res) => res.render('pages/home'))
-  .get('/assignments', (req, res) => res.render('pages/assignments'))
-  .get('/node', (req, res) => res.render('pages/index'))
-  .get('/teamactivity09', (req, res) => res.render('pages/mathform'))
-  .get('/math', handleMath)
-  .get('/prove09', (req, res) => res.render('pages/postform'))
-  .get('/rate', handleRate)
-  .get('/prove10', (req, res) => res.render('pages/pcshoppe'))
-  .get('/getCase', getCase)
-  .get('/getCooler', getCooler)
-  .get('/getCpu', getCpu)
-  .get('/getGpu', getGpu)
-  .get('/getMonitor', getMonitor)
-  .get('/getMotherboard', getMotherboard)
-  .get('/getOS', getOS)
-  .get('/getPsu', getPsu)
-  .get('/getRam', getRam)
-  .get('/getStorage', getStorage)
-  .listen(PORT, () => console.log(`Listening on ${ PORT }`))
+    .use(express.static(path.join(__dirname, 'public')))
+    .set('views', path.join(__dirname, 'views'))
+    .set('view engine', 'ejs')
+    .get('/', (req, res) => res.render('pages/home'))
+    .get('/assignments', (req, res) => res.render('pages/assignments'))
+    .get('/node', (req, res) => res.render('pages/index'))
+    .get('/teamactivity09', (req, res) => res.render('pages/mathform'))
+    .get('/math', handleMath)
+    .get('/prove09', (req, res) => res.render('pages/postform'))
+    .get('/rate', handleRate).get('/prove10', (req, res) => res.render('pages/pcshoppe'))
+    .get('/getCase', caseController.getCase)
+    .get('/getCaseList', caseController.getCaseList)
+    .get('/getCooler', coolerController.getCooler)
+    .get('/getCoolerList', coolerController.getCoolerList)
+    .get('/getCpu', cpuController.getCpu)
+    .get('/getCpuList', cpuController.getCpuList)
+    .get('/getGpu', gpuController.getGpu)
+    .get('/getGpuList', gpuController.getGpuList)
+    .get('/getMonitor', monitorController.getMonitor)
+    .get('/getMonitorList', monitorController.getMonitorList)
+    .get('/getMotherboard', motherboardController.getMotherboard)
+    .get('/getMotherboardList', motherboardController.getMotherboardList)
+    .get('/getOS', osController.getOs)
+    .get('/getOSList', osController.getOsList)
+    .get('/getPsu', psuController.getPsu)
+    .get('/getPsuList', psuController.getPsuList)
+    .get('/getRam', ramController.getRam)
+    .get('/getRamList', ramController.getRamList)
+    .get('/getStorage', storageController.getStorage)
+    .get('/getStorageList', storageController.getStorageList).listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 /****************
  Team Activity 09
@@ -73,9 +87,9 @@ function handleRate(req, res) {
 }
 function computeRate(res, weight, mailType) {
 	let rate = 0;
-	
+
 	switch (mailType) {
-		case 'Letters (stamped)': 
+		case 'Letters (stamped)':
 			if (weight <= 1) {
 				rate = .55;
 			} else if (weight > 1 && weight <= 2) {
@@ -97,7 +111,7 @@ function computeRate(res, weight, mailType) {
 				rate = 95;
 			}
 			break;
-		case 'Large envelopes (flats)': 
+		case 'Large envelopes (flats)':
 			if (weight <= 1) {
 				rate = 1;
 			} else if (weight > 1 && weight <= 2) {
@@ -138,256 +152,11 @@ function computeRate(res, weight, mailType) {
 			}
 			break;
 	}
-	
+
 	const params = {
 		mailType: mailType,
 		rate: rate,
 		weight: weight
 	};
 	res.render('pages/rate', params);
-}
-
-/********
- Prove 10
- ********/
-/*Case*/
-function getCase (req, res){
-	var id = req.query.id;
-	getCaseFromDb(id, function(err, result) {
-		if (err || result == null || result.length != 1) {
-			res.status(500).json({success: false, data: err});
-		} else {
-			res.json(result[0]);
-		}
-	});
-}
-function getCaseFromDb(id, callback) {
-	var sql = null;
-	const params = [id];
-	sql = "SELECT * FROM casing WHERE id = $1::int";
-	pool.query(sql, params, function(err, result) {
-		if (err) {
-			console.log("Error in query: ");
-			console.log(err);
-			callback(err, null);
-		}
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
-}
-/*Cooler*/
-function getCooler (req, res){
-	var id = req.query.id;
-	getCoolerFromDb(id, function(err, result) {
-		if (err || result == null || result.length != 1) {
-			res.status(500).json({success: false, data: err});
-		} else {
-			res.json(result[0]);
-		}
-	});
-}
-function getCoolerFromDb(id, callback) {
-	var sql = "SELECT * FROM cooler WHERE id = $1::int";
-	const params = [id];
-	pool.query(sql, params, function(err, result) {
-		if (err) {
-			console.log("Error in query: ");
-			console.log(err);
-			callback(err, null);
-		}
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
-}
-/*CPU*/
-function getCpu (req, res){
-	var id = req.query.id;
-	getCpuFromDb(id, function(err, result) {
-		if (err || result == null || result.length != 1) {
-			res.status(500).json({success: false, data: err});
-		} else {
-			res.json(result[0]);
-		}
-	});
-}
-function getCpuFromDb(id, callback) {
-	var sql = "SELECT * FROM cpu WHERE id = $1::int";
-	const params = [id];
-	pool.query(sql, params, function(err, result) {
-		if (err) {
-			console.log("Error in query: ");
-			console.log(err);
-			callback(err, null);
-		}
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
-}
-/*GPU*/
-function getGpu (req, res){
-	var id = req.query.id;
-	getGpuFromDb(id, function(err, result) {
-		if (err || result == null || result.length != 1) {
-			res.status(500).json({success: false, data: err});
-		} else {
-			res.json(result[0]);
-		}
-	});
-}
-function getGpuFromDb(id, callback) {
-	var sql = "SELECT * FROM gpu WHERE id = $1::int";
-	const params = [id];
-	pool.query(sql, params, function(err, result) {
-		if (err) {
-			console.log("Error in query: ");
-			console.log(err);
-			callback(err, null);
-		}
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
-}
-/*Monitor*/
-function getMonitor (req, res){
-	var id = req.query.id;
-	getMonitorFromDb(id, function(err, result) {
-		if (err || result == null || result.length != 1) {
-			res.status(500).json({success: false, data: err});
-		} else {
-			res.json(result[0]);
-		}
-	});
-}
-function getMonitorFromDb(id, callback) {
-	var sql = "SELECT * FROM monitor WHERE id = $1::int";
-	const params = [id];
-	pool.query(sql, params, function(err, result) {
-		if (err) {
-			console.log("Error in query: ");
-			console.log(err);
-			callback(err, null);
-		}
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
-}
-/*Motherboard*/
-function getMotherboard (req, res){
-	var id = req.query.id;
-	getMotherboardFromDb(id, function(err, result) {
-		if (err || result == null || result.length != 1) {
-			res.status(500).json({success: false, data: err});
-		} else {
-			res.json(result[0]);
-		}
-	});
-}
-function getMotherboardFromDb(id, callback) {
-	var sql = "SELECT * FROM motherboard WHERE id = $1::int";
-	const params = [id];
-	pool.query(sql, params, function(err, result) {
-		if (err) {
-			console.log("Error in query: ");
-			console.log(err);
-			callback(err, null);
-		}
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
-}
-/*OS*/
-function getOS (req, res){
-	var id = req.query.id;
-	getOsFromDb(id, function(err, result) {
-		if (err || result == null || result.length != 1) {
-			res.status(500).json({success: false, data: err});
-		} else {
-			res.json(result[0]);
-		}
-	});
-}
-function getOsFromDb(id, callback) {
-	var sql = "SELECT * FROM os WHERE id = $1::int";
-	const params = [id];
-	pool.query(sql, params, function(err, result) {
-		if (err) {
-			console.log("Error in query: ");
-			console.log(err);
-			callback(err, null);
-		}
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
-}
-/*PSU*/
-function getPsu (req, res){
-	var id = req.query.id;
-	getPsuFromDb(id, function(err, result) {
-		if (err || result == null || result.length != 1) {
-			res.status(500).json({success: false, data: err});
-		} else {
-			res.json(result[0]);
-		}
-	});
-}
-function getPsuFromDb(id, callback) {
-	var sql = "SELECT * FROM psu WHERE id = $1::int";
-	const params = [id];
-	pool.query(sql, params, function(err, result) {
-		if (err) {
-			console.log("Error in query: ");
-			console.log(err);
-			callback(err, null);
-		}
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
-}
-/*RAM*/
-function getRam (req, res){
-	var id = req.query.id;
-	getRamFromDb(id, function(err, result) {
-		if (err || result == null || result.length != 1) {
-			res.status(500).json({success: false, data: err});
-		} else {
-			res.json(result[0]);
-		}
-	});
-}
-function getRamFromDb(id, callback) {
-	var sql = "SELECT * FROM ram WHERE id = $1::int";
-	const params = [id];
-	pool.query(sql, params, function(err, result) {
-		if (err) {
-			console.log("Error in query: ");
-			console.log(err);
-			callback(err, null);
-		}
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
-}
-/*Storage*/
-function getStorage (req, res){
-	var id = req.query.id;
-	getStorageFromDb(id, function(err, result) {
-		if (err || result == null || result.length != 1) {
-			res.status(500).json({success: false, data: err});
-		} else {
-			res.json(result[0]);
-		}
-	});
-}
-function getStorageFromDb(id, callback) {
-	var sql = "SELECT * FROM storage WHERE id = $1::int";
-	const params = [id];
-	pool.query(sql, params, function(err, result) {
-		if (err) {
-			console.log("Error in query: ");
-			console.log(err);
-			callback(err, null);
-		}
-		console.log("Found result: " + JSON.stringify(result.rows));
-		callback(null, result.rows);
-	});
 }

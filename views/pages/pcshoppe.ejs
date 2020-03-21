@@ -2,54 +2,41 @@
 <html>
 	<head>
 		<% include ../partials/myHeader %>
-		<script>
-			function loadCase() {
-				var xhttp = new XMLHttpRequest();
-				xhttp.onreadystatechange = function() {
-					if (this.readyState == 4 && this.status == 200) {
-						document.getElementById("test").innerHTML = this.responseText;
-					}
-				};
-				for (var i = 1; i < 15; i++) {
-					xhttp.open("GET", "/getCase?id=" + i, true);
-					xhttp.send();
-				}
-			}
-		</script>
+		<script src="pcshoppe-clientscript.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	</head>
-	<body>
+	<body onload="loadData()">
 		<h1>The PC Shoppe</h1>
 		<form>
-			<p>
-				<button onclick="loadCase()">Casing</button>
-				<p id="test"></p>
+			<p>Case
+				<select id="cases"><option></option></select>
 			</p>
-			<p>
-				<button>Cooler</button>
+			<p>Cooler
+				<select id="coolers"><option></option></select>
 			</p>
-			<p>
-				<button>CPU</button>
+			<p>CPU
+				<select id="cpus"><option></option></select>
 			</p>
-			<p>
-				<button>Graphics card</button>
+			<p>Graphics card
+				<select id="gpus"><option></option></select>
 			</p>
-			<p>
-				<button>Monitor</button>
+			<p>Monitor
+				<select id="monitors"><option></option></select>
 			</p>
-			<p>
-				<button>Motherboard</button>
+			<p>Motherboard
+				<select id="motherboards"><option></option></select>
 			</p>
-			<p>
-				<button>Operating system</button>
+			<p>Operating system
+				<select id="os"><option></option></select>
 			</p>
-			<p>
-				<button>Power supply</button>
+			<p>Power supply
+				<select id="psus"><option></option></select>
 			</p>
-			<p>
-				<button>Memory</button>
+			<p>Memory
+				<select id="ram"><option></option></select>
 			</p>
-			<p>
-				<button>Storage</button>
+			<p>Storage
+				<select id="storage"><option></option></select>
 			</p>
 			<p><input type="submit"/></p>
 		</form>

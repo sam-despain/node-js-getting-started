@@ -146,4 +146,6 @@ INSERT INTO os (name, price) VALUES ('Linux Debian', 0);
 INSERT INTO os (name, price) VALUES ('Linux Ubuntu', 0);
 INSERT INTO os (name, price) VALUES ('Linux Red Hat', 0);
 
-GRANT USAGE, SELECT ON SEQUENCE 
+CREATE USER despa3 WITH PASSWORD 'SuperMario3D';
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO despa3;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO despa3;
