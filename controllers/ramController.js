@@ -5,14 +5,6 @@ function getRamList(req, res) {
 		res.json(results);
 	});
 }
-
-function getRam(req, res) {
-	var id = req.query.id;
-	ramModel.getRamById(id, function(err, result) {
-		res.json(result);
-	});
-}
 module.exports = {
-	getRamList: getRamList,
-  getRam: getRam
+	getRamList: getRamList
 };

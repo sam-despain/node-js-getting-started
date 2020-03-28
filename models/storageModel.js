@@ -3,7 +3,7 @@ const connectionString = process.env.DATABASE_URL || "postgres://despa3:SuperMar
 const pool = new Pool({connectionString: connectionString});
 
 function getAllStorage(callback) {
-  var sql = "SELECT id, type, size, price FROM storage";
+  var sql = "SELECT id, type, size, price FROM storage ORDER BY id";
   pool.query(sql, function(err, dbResult) {
 		if (err) {
 			throw err;
@@ -13,21 +13,6 @@ function getAllStorage(callback) {
 		}
 	});
 }
-function getStorageById(id, callback) {
-  var sql = "SELECT id, type, size, price FROM storage WHERE id=$1::int";
-  var pastorages = [id];
-
-  pool.query(sql, pastorages, function(err, dbResult) {
-		if (err) {
-			throw err;
-		} else {
-      console.log("Back from database with: " + JSON.stringify(dbResult.rows));
-			var results = JSON.stringify(dbResult.rows);
-			callback(null, results);
-		}
-	});
-}
 module.exports = {
-  getAllStorage: getAllStorage,
-  getStorageById: getStorageById
+  getAllStorage: getAllStorage
 };

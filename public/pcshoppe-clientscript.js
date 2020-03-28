@@ -1,62 +1,67 @@
+function loadTotal() {
+    var total = parseFloat($("#cases").val()) + parseFloat($("#coolers").val()) + parseFloat($("#cpus").val()) + parseFloat($("#gpus").val()) + parseFloat($("#monitors").val()) + parseFloat($("#motherboards").val()) + parseFloat($("#os").val()) + parseFloat($("#psus").val()) + parseFloat($("#ram").val()) + parseFloat($("#storage").val());
+    $("#total").empty();
+    $("#total").append('<b>Total</b><br>$<input id="total" value="' + total.toFixed(2) + '" readonly>');
+}
 function loadData() {
-    $.get("/getCaseList", function(data) {
+    $.get("/getCase", function(data) {
         //console.log("Back from server with: " + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            $("#cases").append("<option value='" + data[i].price + "'>" + data[i].type + " - $" + data[i].price + "</option>");
+            $("#cases").append("<option value=" + data[i].price + ">" + data[i].type + " - $" + data[i].price + "</option>");
         }
     });
-    $.get("/getCoolerList", function(data) {
+    $.get("/getCooler", function(data) {
         //console.log("Back from server with: " + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            $("#coolers").append("<option value='" + data[i].price + "'>" + data[i].type + " - $" + data[i].price + "</option>");
+            $("#coolers").append("<option value=" + data[i].price + ">" + data[i].type + " - $" + data[i].price + "</option>");
         }
     });
-    $.get("/getCpuList", function(data) {
+    $.get("/getCpu", function(data) {
         //console.log("Back from server with: " + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            $("#cpus").append("<option value='" + data[i].price + "'>" + data[i].cores + "-core @ " + data[i].clock + " GHz - $" + data[i].price + "</option>");
+            $("#cpus").append("<option value=" + data[i].price + ">" + data[i].cores + "-core @ " + data[i].clock + " GHz - $" + data[i].price + "</option>");
         }
     });
-    $.get("/getGpuList", function(data) {
+    $.get("/getGpu", function(data) {
         //console.log("Back from server with: " + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            $("#gpus").append("<option value='" + data[i].price + "'>" + data[i].ram + " GB, " + data[i].cores + "-core @ " + data[i].clock + " GHz - $" + data[i].price + "</option>");
+            $("#gpus").append("<option value=" + data[i].price + ">" + data[i].ram + " GB, " + data[i].cores + "-core @ " + data[i].clock + " GHz - $" + data[i].price + "</option>");
         }
     });
-    $.get("/getMonitorList", function(data) {
+    $.get("/getMonitor", function(data) {
         //console.log("Back from server with: " + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            $("#monitors").append("<option value='" + data[i].price + "'>" + data[i].resolution + " - " + data[i].refresh + " Hz - $" + data[i].price + "</option>");
+            $("#monitors").append("<option value=" + data[i].price + ">" + data[i].resolution + " - " + data[i].refresh + " Hz - $" + data[i].price + "</option>");
         }
     });
-    $.get("/getMotherboardList", function(data) {
+    $.get("/getMotherboard", function(data) {
         //console.log("Back from server with: " + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            $("#motherboards").append("<option value='" + data[i].price + "'>" + data[i].type + " - $" + data[i].price + "</option>");
+            $("#motherboards").append("<option value=" + data[i].price + ">" + data[i].type + " - $" + data[i].price + "</option>");
         }
     });
-    $.get("/getOsList", function(data) {
+    $.get("/getOs", function(data) {
         //console.log("Back from server with: " + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            $("#os").append("<option value='" + data[i].price + "'>" + data[i].name + " - $" + data[i].price + "</option>");
+            $("#os").append("<option value=" + data[i].price + ">" + data[i].name + " - $" + data[i].price + "</option>");
         }
     });
-    $.get("/getPsuList", function(data) {
+    $.get("/getPsu", function(data) {
         //console.log("Back from server with: " + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            $("#psus").append("<option value='" + data[i].price + "'>" + data[i].wattage + "W - $" + data[i].price + "</option>");
+            $("#psus").append("<option value=" + data[i].price + ">" + data[i].wattage + "W - $" + data[i].price + "</option>");
         }
     });
-    $.get("/getRamList", function(data) {
+    $.get("/getRam", function(data) {
         //console.log("Back from server with: " + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            $("#ram").append("<option value='" + data[i].price + "'>" + data[i].size + " GB - $" + data[i].price + "</option>");
+            $("#ram").append("<option value=" + data[i].price + ">" + data[i].size + " GB - $" + data[i].price + "</option>");
         }
     });
-    $.get("/getStorageList", function(data) {
+    $.get("/getStorage", function(data) {
         //console.log("Back from server with: " + JSON.stringify(data));
         for (var i = 0; i < data.length; i++) {
-            $("#storage").append("<option value='" + data[i].price + "'>" + data[i].type + " " + data[i].size + " GB - $" + data[i].price + "</option>");
+            $("#storage").append("<option value=" + data[i].price + ">" + data[i].type + " " + data[i].size + " GB - $" + data[i].price + "</option>");
         }
     });
 

@@ -3,7 +3,7 @@ const connectionString = process.env.DATABASE_URL || "postgres://despa3:SuperMar
 const pool = new Pool({connectionString: connectionString});
 
 function getAllPsus(callback) {
-  var sql = "SELECT id, wattage, price FROM psu";
+  var sql = "SELECT id, wattage, price FROM psu ORDER BY id";
   pool.query(sql, function(err, dbResult) {
 		if (err) {
 			throw err;
@@ -13,21 +13,6 @@ function getAllPsus(callback) {
 		}
 	});
 }
-function getPsuById(id, callback) {
-  var sql = "SELECT id, wattage, price FROM psu WHERE id=$1::int";
-  var params = [id];
-
-  pool.query(sql, params, function(err, dbResult) {
-		if (err) {
-			throw err;
-		} else {
-      console.log("Back from database with: " + JSON.stringify(dbResult.rows));
-			var results = JSON.stringify(dbResult.rows);
-			callback(null, results);
-		}
-	});
-}
 module.exports = {
-  getAllPsus: getAllPsus,
-  getPsuById: getPsuById
+  getAllPsus: getAllPsus
 };

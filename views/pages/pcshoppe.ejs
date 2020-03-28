@@ -7,38 +7,43 @@
 	</head>
 	<body onload="loadData()">
 		<h1>The PC Shoppe</h1>
-		<form>
+		<form action="/postPC" method="post">
 			<p>Case<br>
-				<select id="cases"><option></option></select>
+				<select onblur="loadTotal()" id="cases"><option value=0></option></select>
 			</p>
 			<p>Cooler<br>
-				<select id="coolers"><option></option></select>
+				<select onblur="loadTotal()" id="coolers"><option value=0></option></select>
 			</p>
 			<p>CPU<br>
-				<select id="cpus"><option></option></select>
+				<select onblur="loadTotal()" id="cpus"><option value=0></option></select>
 			</p>
 			<p>Graphics card<br>
-				<select id="gpus"><option></option></select>
+				<select onblur="loadTotal()" id="gpus"><option value=0></option></select>
 			</p>
 			<p>Monitor<br>
-				<select id="monitors"><option></option></select>
+				<select onblur="loadTotal()" id="monitors"><option value=0></option></select>
 			</p>
 			<p>Motherboard<br>
-				<select id="motherboards"><option></option></select>
+				<select onblur="loadTotal()" id="motherboards"><option value=0></option></select>
 			</p>
 			<p>Operating system<br>
-				<select id="os"><option></option></select>
+				<select onblur="loadTotal()" id="os"><option value=0></option></select>
 			</p>
 			<p>Power supply<br>
-				<select id="psus"><option></option></select>
+				<select onblur="loadTotal()" id="psus"><option value=0></option></select>
 			</p>
 			<p>Memory<br>
-				<select id="ram"><option></option></select>
+				<select onblur="loadTotal()" id="ram"><option value=0></option></select>
 			</p>
 			<p>Storage<br>
-				<select id="storage"><option></option></select>
+				<select onblur="loadTotal()" id="storage"><option value=0></option></select>
 			</p>
-			<p><input type="submit" value="Get price"/></p>
+			<p id="total"><b>Total</b><br>
+				$<input value="0.00" readonly>
+			</p>
+			<p>
+				<input type="submit" value="Create PC">
+			</p>
 		</form>
 		<% include ../partials/myFooter %>
 	</body>

@@ -5,14 +5,6 @@ function getCaseList(req, res) {
 		res.json(results);
 	});
 }
-
-function getCase(req, res) {
-	var id = req.query.id;
-	caseModel.getCaseById(id, function(err, result) {
-		res.json(result);
-	});
-}
 module.exports = {
-	getCaseList: getCaseList,
-	getCase: getCase
+	getCaseList: getCaseList
 };

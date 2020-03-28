@@ -5,14 +5,6 @@ function getGpuList(req, res) {
 		res.json(results);
 	});
 }
-
-function getGpu(req, res) {
-	var id = req.query.id;
-	gpuModel.getGpuById(id, function(err, result) {
-		res.json(result);
-	});
-}
 module.exports = {
-	getGpuList: getGpuList,
-  getGpu: getGpu
+	getGpuList: getGpuList
 };

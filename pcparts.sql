@@ -1,3 +1,20 @@
+CREATE DATABASE thepcshoppe;
+
+CREATE TABLE pc (
+	id serial PRIMARY KEY UNIQUE NOT NULL,
+	casing_id int NOT NULL REFERENCES casing(id),
+	cooler_id int NOT NULL REFERENCES cooler(id),
+	cpu_id int NOT NULL REFERENCES cpu(id),
+	gpu_id int REFERENCES gpu(id),
+	monitor_id int REFERENCES monitor(id),
+	motherboard_id int NOT NULL REFERENCES motherboard(id),
+	os_id int REFERENCES os(id),
+	psu_id int NOT NULL REFERENCES psu(id),
+	ram_id int NOT NULL REFERENCES ram(id),
+	storage_id int NOT NULL REFERENCES storage(id),
+	price float NOT NULL
+);
+
 CREATE TABLE cpu (
 	id serial PRIMARY KEY UNIQUE NOT NULL,
 	cores int NOT NULL,
@@ -11,11 +28,12 @@ INSERT INTO cpu (cores, clock, price) VALUES (2, 4.0, 159.99);
 INSERT INTO cpu (cores, clock, price) VALUES (4, 2.5, 39.99);
 INSERT INTO cpu (cores, clock, price) VALUES (4, 3.0, 99.99);
 INSERT INTO cpu (cores, clock, price) VALUES (4, 3.5, 139.99);
-INSERT INTO cpu (cores, clock, price) VALUES (4, 4.0, 169.99);
+INSERT INTO cpu (cores, clock, price) VALUES (4, 4.0, 179.99);
 INSERT INTO cpu (cores, clock, price) VALUES (6, 2.5, 49.99);
-INSERT INTO cpu (cores, clock, price) VALUES (6, 3.0, 149.99);
+INSERT INTO cpu (cores, clock, price) VALUES (6, 3.0, 134.99);
 INSERT INTO cpu (cores, clock, price) VALUES (6, 3.5, 169.99);
-INSERT INTO cpu (cores, clock, price) VALUES (8, 2.5, 99.99);
+INSERT INTO cpu (cores, clock, price) VALUES (6, 4.0, 199.99);
+INSERT INTO cpu (cores, clock, price) VALUES (8, 2.5, 109.99);
 INSERT INTO cpu (cores, clock, price) VALUES (8, 3.0, 149.99);
 INSERT INTO cpu (cores, clock, price) VALUES (8, 3.5, 259.99);
 INSERT INTO cpu (cores, clock, price) VALUES (8, 4.0, 399.99);
@@ -67,8 +85,8 @@ INSERT INTO storage (type, size, price) VALUES ('SSD', 4096, 459.99);
 INSERT INTO storage (type, size, price) VALUES ('HDD', 32, 9.99);
 INSERT INTO storage (type, size, price) VALUES ('HDD', 64, 11.99);
 INSERT INTO storage (type, size, price) VALUES ('HDD', 128, 14.99);
-INSERT INTO storage (type, size, price) VALUES ('HDD', 256, 19.99);
-INSERT INTO storage (type, size, price) VALUES ('HDD', 512, 24.99);
+INSERT INTO storage (type, size, price) VALUES ('HDD', 256, 17.99);
+INSERT INTO storage (type, size, price) VALUES ('HDD', 512, 21.99);
 INSERT INTO storage (type, size, price) VALUES ('HDD', 1024, 34.99);
 INSERT INTO storage (type, size, price) VALUES ('HDD', 2048, 44.99);
 INSERT INTO storage (type, size, price) VALUES ('HDD', 4096, 79.99);
@@ -142,9 +160,7 @@ CREATE TABLE os (
 INSERT INTO os (name, price) VALUES ('Windows 7', 79.99);
 INSERT INTO os (name, price) VALUES ('Windows 8', 99.99);
 INSERT INTO os (name, price) VALUES ('Windows 10', 119.99);
-INSERT INTO os (name, price) VALUES ('Linux Debian', 0);
-INSERT INTO os (name, price) VALUES ('Linux Ubuntu', 0);
-INSERT INTO os (name, price) VALUES ('Linux Red Hat', 0);
+INSERT INTO os (name, price) VALUES ('Linux', 0);
 
 CREATE USER despa3 WITH PASSWORD 'SuperMario3D';
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO despa3;

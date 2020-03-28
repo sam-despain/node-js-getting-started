@@ -5,14 +5,6 @@ function getPsuList(req, res) {
 		res.json(results);
 	});
 }
-
-function getPsu(req, res) {
-	var id = req.query.id;
-	psuModel.getPsuById(id, function(err, result) {
-		res.json(result);
-	});
-}
 module.exports = {
-	getPsuList: getPsuList,
-  getPsu: getPsu
+	getPsuList: getPsuList
 };

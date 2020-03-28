@@ -3,7 +3,7 @@ const connectionString = process.env.DATABASE_URL || "postgres://despa3:SuperMar
 const pool = new Pool({connectionString: connectionString});
 
 function getAllMotherboards(callback) {
-  var sql = "SELECT id, type, price FROM motherboard";
+  var sql = "SELECT id, type, price FROM motherboard ORDER BY id";
   pool.query(sql, function(err, dbResult) {
 		if (err) {
 			throw err;
@@ -13,21 +13,6 @@ function getAllMotherboards(callback) {
 		}
 	});
 }
-function getMotherboardById(id, callback) {
-  var sql = "SELECT id, type, price FROM motherboard WHERE id=$1::int";
-  var params = [id];
-
-  pool.query(sql, params, function(err, dbResult) {
-		if (err) {
-			throw err;
-		} else {
-      console.log("Back from database with: " + JSON.stringify(dbResult.rows));
-			var results = JSON.stringify(dbResult.rows);
-			callback(null, results);
-		}
-	});
-}
 module.exports = {
-  getAllMotherboards: getAllMotherboards,
-  getMotherboardById: getMotherboardById
+  getAllMotherboards: getAllMotherboards
 };

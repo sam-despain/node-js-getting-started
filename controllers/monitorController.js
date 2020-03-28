@@ -5,14 +5,6 @@ function getMonitorList(req, res) {
 		res.json(results);
 	});
 }
-
-function getMonitor(req, res) {
-	var id = req.query.id;
-	monitorModel.getMonitorById(id, function(err, result) {
-		res.json(result);
-	});
-}
 module.exports = {
-	getMonitorList: getMonitorList,
-  getMonitor: getMonitor
+	getMonitorList: getMonitorList
 };

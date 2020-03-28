@@ -5,14 +5,6 @@ function getCpuList(req, res) {
 		res.json(results);
 	});
 }
-
-function getCpu(req, res) {
-	var id = req.query.id;
-	cpuModel.getCpuById(id, function(err, result) {
-		res.json(result);
-	});
-}
 module.exports = {
-	getCpuList: getCpuList,
-  getCpu: getCpu
+	getCpuList: getCpuList
 };
