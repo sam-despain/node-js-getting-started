@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const bodyParser = require('body-parser');
 const pcController = require('./controllers/pcController.js');
 const caseController = require('./controllers/caseController.js');
 const coolerController = require('./controllers/coolerController.js');
@@ -13,8 +14,11 @@ const ramController = require('./controllers/ramController.js');
 const storageController = require('./controllers/storageController.js');
 const PORT = process.env.PORT || 5000;
 
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 express()
     .use(express.static(path.join(__dirname, 'public')))
+    .use(express.json())
     .set('views', path.join(__dirname, 'views'))
     .set('view engine', 'ejs')
     .get('/', (req, res) => res.render('pages/home'))
@@ -36,7 +40,7 @@ express()
     .get('/getPsu', psuController.getPsuList)
     .get('/getRam', ramController.getRamList)
     .get('/getStorage', storageController.getStorageList)
-    .post('/postPC', pcController.postPC)
+    .post('/postPC', urlencodedParser, pcController.postPC)
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 
 /****************

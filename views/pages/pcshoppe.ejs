@@ -9,37 +9,36 @@
 		<h1>The PC Shoppe</h1>
 		<form action="/postPC" method="post">
 			<p>Case<br>
-				<select onblur="loadTotal()" id="cases"><option value=0></option></select>
+				<select name="casing" onblur="loadTotal()" id="casing"></select>
 			</p>
 			<p>Cooler<br>
-				<select onblur="loadTotal()" id="coolers"><option value=0></option></select>
+				<select name="cooler" onblur="loadTotal()" id="cooler"></select>
 			</p>
 			<p>CPU<br>
-				<select onblur="loadTotal()" id="cpus"><option value=0></option></select>
+				<select name="cpu" onblur="loadTotal()" id="cpu"></select>
 			</p>
 			<p>Graphics card<br>
-				<select onblur="loadTotal()" id="gpus"><option value=0></option></select>
+				<select name="gpu" onblur="loadTotal()" id="gpu"><option value=0></option></select>
 			</p>
 			<p>Monitor<br>
-				<select onblur="loadTotal()" id="monitors"><option value=0></option></select>
+				<select name="monitor" onblur="loadTotal()" id="monitor"><option value=0></option></select>
 			</p>
 			<p>Motherboard<br>
-				<select onblur="loadTotal()" id="motherboards"><option value=0></option></select>
+				<select name="motherboard" onblur="loadTotal()" id="motherboard"></select>
 			</p>
 			<p>Operating system<br>
-				<select onblur="loadTotal()" id="os"><option value=0></option></select>
+				<select name="os" onblur="loadTotal()" id="os"><option value=0></option></select>
 			</p>
 			<p>Power supply<br>
-				<select onblur="loadTotal()" id="psus"><option value=0></option></select>
+				<select name="psu" onblur="loadTotal()" id="psu"></select>
 			</p>
 			<p>Memory<br>
-				<select onblur="loadTotal()" id="ram"><option value=0></option></select>
+				<select name="ram" onblur="loadTotal()" id="ram"></select>
 			</p>
 			<p>Storage<br>
-				<select onblur="loadTotal()" id="storage"><option value=0></option></select>
+				<select name="storage" onblur="loadTotal()" id="storage"></select>
 			</p>
-			<p id="total"><b>Total</b><br>
-				$<input value="0.00" readonly>
+			<p id="total"><b>Total</b><br>$<input name="total" value="321.93" readonly>
 			</p>
 			<p>
 				<input type="submit" value="Create PC">

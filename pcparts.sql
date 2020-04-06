@@ -1,20 +1,5 @@
 CREATE DATABASE thepcshoppe;
 
-CREATE TABLE pc (
-	id serial PRIMARY KEY UNIQUE NOT NULL,
-	casing_id int NOT NULL REFERENCES casing(id),
-	cooler_id int NOT NULL REFERENCES cooler(id),
-	cpu_id int NOT NULL REFERENCES cpu(id),
-	gpu_id int REFERENCES gpu(id),
-	monitor_id int REFERENCES monitor(id),
-	motherboard_id int NOT NULL REFERENCES motherboard(id),
-	os_id int REFERENCES os(id),
-	psu_id int NOT NULL REFERENCES psu(id),
-	ram_id int NOT NULL REFERENCES ram(id),
-	storage_id int NOT NULL REFERENCES storage(id),
-	price float NOT NULL
-);
-
 CREATE TABLE cpu (
 	id serial PRIMARY KEY UNIQUE NOT NULL,
 	cores int NOT NULL,
@@ -161,6 +146,21 @@ INSERT INTO os (name, price) VALUES ('Windows 7', 79.99);
 INSERT INTO os (name, price) VALUES ('Windows 8', 99.99);
 INSERT INTO os (name, price) VALUES ('Windows 10', 119.99);
 INSERT INTO os (name, price) VALUES ('Linux', 0);
+
+CREATE TABLE pc (
+	id serial PRIMARY KEY UNIQUE NOT NULL,
+	casing_id int NOT NULL REFERENCES casing(id),
+	cooler_id int NOT NULL REFERENCES cooler(id),
+	cpu_id int NOT NULL REFERENCES cpu(id),
+	gpu_id int REFERENCES gpu(id),
+	monitor_id int REFERENCES monitor(id),
+	motherboard_id int NOT NULL REFERENCES motherboard(id),
+	os_id int REFERENCES os(id),
+	psu_id int NOT NULL REFERENCES psu(id),
+	ram_id int NOT NULL REFERENCES ram(id),
+	storage_id int NOT NULL REFERENCES storage(id),
+	price float NOT NULL
+);
 
 CREATE USER despa3 WITH PASSWORD 'SuperMario3D';
 GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO despa3;
