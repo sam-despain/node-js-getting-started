@@ -25,70 +25,70 @@ function loadTotal() {
         parseFloat(casePrice);
         total += casePrice;
         $("#total").empty();
-        $("#total").append('<b>Total</b><br>$<input name="total" value="' + total.toFixed(2) + '" readonly>');
+        $("#total").append('<td><b>Total</b></td><td>$<input name="total" value="' + total.toFixed(2) + '" readonly></td>');
     });
     $.get("/getCooler", function(data) {
         coolerPrice = (coolerId >= 0) ? data[coolerId].price : 0;
         parseFloat(coolerPrice);
         total += coolerPrice;
         $("#total").empty();
-        $("#total").append('<b>Total</b><br>$<input name="total" value="' + total.toFixed(2) + '" readonly>');
+        $("#total").append('<td><b>Total</b></td><td>$<input name="total" value="' + total.toFixed(2) + '" readonly></td>');
     });
     $.get("/getCpu", function(data) {
         cpuPrice = (cpuId >= 0) ? data[cpuId].price : 0;
         parseFloat(cpuPrice);
         total += cpuPrice;
         $("#total").empty();
-        $("#total").append('<b>Total</b><br>$<input name="total" value="' + total.toFixed(2) + '" readonly>');
+        $("#total").append('<td><b>Total</b></td><td>$<input name="total" value="' + total.toFixed(2) + '" readonly></td>');
     });
     $.get("/getGpu", function(data) {
         gpuPrice = (gpuId >= 0) ? data[gpuId].price : 0;
         parseFloat(gpuPrice);
         total += gpuPrice;
         $("#total").empty();
-        $("#total").append('<b>Total</b><br>$<input name="total" value="' + total.toFixed(2) + '" readonly>');
+        $("#total").append('<td><b>Total</b></td><td>$<input name="total" value="' + total.toFixed(2) + '" readonly></td>');
     });
     $.get("/getMonitor", function(data) {
         monitorPrice = (monitorId >= 0) ? data[monitorId].price : 0;
         parseFloat(monitorPrice);
         total += monitorPrice;
         $("#total").empty();
-        $("#total").append('<b>Total</b><br>$<input name="total" value="' + total.toFixed(2) + '" readonly>');
+        $("#total").append('<td><b>Total</b></td><td>$<input name="total" value="' + total.toFixed(2) + '" readonly></td>');
     });
     $.get("/getMotherboard", function(data) {
         motherboardPrice = (motherboardId >= 0) ? data[motherboardId].price : 0;
         parseFloat(motherboardPrice);
         total += motherboardPrice;
         $("#total").empty();
-        $("#total").append('<b>Total</b><br>$<input name="total" value="' + total.toFixed(2) + '" readonly>');
+        $("#total").append('<td><b>Total</b></td><td>$<input name="total" value="' + total.toFixed(2) + '" readonly></td>');
     });
     $.get("/getOs", function(data) {
         osPrice = (osId >= 0) ? data[osId].price : 0;
         parseFloat(osPrice);
         total += osPrice;
         $("#total").empty();
-        $("#total").append('<b>Total</b><br>$<input name="total" value="' + total.toFixed(2) + '" readonly>');
+        $("#total").append('<td><b>Total</b></td><td>$<input name="total" value="' + total.toFixed(2) + '" readonly></td>');
     });
     $.get("/getPsu", function(data) {
         psuPrice = (psuId >= 0) ? data[psuId].price : 0;
         parseFloat(psuPrice);
         total += psuPrice;
         $("#total").empty();
-        $("#total").append('<b>Total</b><br>$<input name="total" value="' + total.toFixed(2) + '" readonly>');
+        $("#total").append('<td><b>Total</b></td><td>$<input name="total" value="' + total.toFixed(2) + '" readonly></td>');
     });
     $.get("/getRam", function(data) {
         ramPrice = (ramId >= 0) ? data[ramId].price : 0;
         parseFloat(ramPrice);
         total += ramPrice;
         $("#total").empty();
-        $("#total").append('<b>Total</b><br>$<input name="total" value="' + total.toFixed(2) + '" readonly>');
+        $("#total").append('<td><b>Total</b></td><td>$<input name="total" value="' + total.toFixed(2) + '" readonly></td>');
     });
     $.get("/getStorage", function(data) {
         storagePrice = (storageId >= 0) ? data[storageId].price : 0;
         parseFloat(storagePrice);
         total += storagePrice;
         $("#total").empty();
-        $("#total").append('<b>Total</b><br>$<input name="total" value="' + total.toFixed(2) + '" readonly>');
+        $("#total").append('<td><b>Total</b></td><td>$<input name="total" value="' + total.toFixed(2) + '" readonly></td>');
     });
 }
 
@@ -198,18 +198,18 @@ function loadData() {
             var thisRam = ramList[ramID];
             var thisStorage = storageList[storageID];
 
-            list += "<div class='fittedDiv'><p>Case<br> " + thisCase + "</p>";
-            list += "<p>Cooler<br> " + thisCooler + "</p>";
-            list += "<p>CPU<br> " + thisCpu + "</p>";
-            list += "<p>Graphics<br> " + thisGpu + "</p>";
-            list += "<p>Monitor<br> " + thisMonitor + "</p>";
-            list += "<p>Motherboard<br> " + thisMotherboard + "</p>";
-            list += "<p>OS<br> " + thisOs + "</p>";
-            list += "<p>Power supply<br> " + thisPsu + "</p>";
-            list += "<p>Memory<br> " + thisRam + "</p>";
-            list += "<p>Storage<br> " + thisStorage + "</p>";
-            list += "<p>$" + data[i].price + "</p></div>";
+            list += "<div class='fittedDiv' id='boxList'><p><span class='grayLabel'>Case</span><br>" + thisCase + "</p>";
+            list += "<p><span class='grayLabel'>Cooler</span><br>" + thisCooler + "</p>";
+            list += "<p><span class='grayLabel'>CPU</span><br>" + thisCpu + "</p>";
+            list += "<p><span class='grayLabel'>Graphics</span><br>" + thisGpu + "</p>";
+            list += "<p><span class='grayLabel'>Monitor</span><br>" + thisMonitor + "</p>";
+            list += "<p><span class='grayLabel'>Motherboard</span><br>" + thisMotherboard + "</p>";
+            list += "<p><span class='grayLabel'>OS</span><br>" + thisOs + "</p>";
+            list += "<p><span class='grayLabel'>Power supply</span><br>" + thisPsu + "</p>";
+            list += "<p><span class='grayLabel'>Memory</span><br>" + thisRam + "</p>";
+            list += "<p><span class='grayLabel'>Storage</span><br>" + thisStorage + "</p>";
+            list += "<p><span class='grayLabel'>Price</span><br>$" + data[i].price + "</p></div>";
         }
-        $(".pcList").append(list);
+        $("#pcList").append(list);
     });
 }
