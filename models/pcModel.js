@@ -12,6 +12,18 @@ function insertNewPC(casing, cooler, cpu, gpu, monitor, motherboard, os, psu, ra
 		}
 	});
 }
+function getAllPCs(callback) {
+  var sql = "SELECT id, casing_id, cooler_id, cpu_id, gpu_id, monitor_id, motherboard_id, os_id, psu_id, ram_id, storage_id, price FROM pc ORDER BY id";
+  pool.query(sql, function(err, dbResult) {
+		if (err) {
+			throw err;
+		} else {
+			var results = dbResult.rows;
+			callback(null, results);
+		}
+	});
+}
 module.exports = {
-  insertNewPC: insertNewPC
+  insertNewPC: insertNewPC,
+  getAllPCs: getAllPCs
 };

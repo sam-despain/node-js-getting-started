@@ -40,6 +40,7 @@ express()
     .get('/getPsu', psuController.getPsuList)
     .get('/getRam', ramController.getRamList)
     .get('/getStorage', storageController.getStorageList)
+    .get('/getPC', pcController.getPCList)
     .post('/postPC', urlencodedParser, pcController.postPC)
     .listen(PORT, () => console.log(`Listening on ${ PORT }`))
 

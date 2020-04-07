@@ -21,7 +21,13 @@ function postPC(req, res) {
     pcModel.insertNewPC(casing, cooler, cpu, gpu, monitor, motherboard, os, psu, ram, storage, price);
     res.redirect('/thepcshoppe');
 }
+function getPCList(req, res) {
+	pcModel.getAllPCs(function(err, results) {
+		res.json(results);
+	});
+}
 
 module.exports = {
-    postPC: postPC
+    postPC: postPC,
+    getPCList: getPCList
 };
