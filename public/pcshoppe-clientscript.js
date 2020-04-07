@@ -208,7 +208,7 @@ function loadData() {
             list += "<p><span class='grayLabel'>Power supply</span><br>" + thisPsu + "</p>";
             list += "<p><span class='grayLabel'>Memory</span><br>" + thisRam + "</p>";
             list += "<p><span class='grayLabel'>Storage</span><br>" + thisStorage + "</p>";
-            list += "<p><span class='grayLabel'>Price</span><br>$" + data[i].price + "</p></div>";
+            list += "<p><span class='grayLabel'>Price</span><br>$" + data[i].price.toFixed(2) + "</p></div>";
         }
         $("#pcList").append(list);
     });
