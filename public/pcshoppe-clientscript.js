@@ -198,17 +198,17 @@ function loadData() {
             var thisRam = ramList[ramID];
             var thisStorage = storageList[storageID];
 
-            list += "<ul><li>Case: " + thisCase + "</li>";
-            list += "<li>Cooler: " + thisCooler + "</li>";
-            list += "<li>CPU: " + thisCpu + "</li>";
-            list += "<li>Graphics: " + thisGpu + "</li>";
-            list += "<li>Monitor: " + thisMonitor + "</li>";
-            list += "<li>Motherboard: " + thisMotherboard + "</li>";
-            list += "<li>OS: " + thisOs + "</li>";
-            list += "<li>Power supply: " + thisPsu + "</li>";
-            list += "<li>Memory: " + thisRam + "</li>";
-            list += "<li>Storage: " + thisStorage + "</li>";
-            list += "<li>$" + data[i].price + "</li></ul>";
+            list += "<div class='fittedDiv'><p>Case<br> " + thisCase + "</p>";
+            list += "<p>Cooler<br> " + thisCooler + "</p>";
+            list += "<p>CPU<br> " + thisCpu + "</p>";
+            list += "<p>Graphics<br> " + thisGpu + "</p>";
+            list += "<p>Monitor<br> " + thisMonitor + "</p>";
+            list += "<p>Motherboard<br> " + thisMotherboard + "</p>";
+            list += "<p>OS<br> " + thisOs + "</p>";
+            list += "<p>Power supply<br> " + thisPsu + "</p>";
+            list += "<p>Memory<br> " + thisRam + "</p>";
+            list += "<p>Storage<br> " + thisStorage + "</p>";
+            list += "<p>$" + data[i].price + "</p></div>";
         }
         $(".pcList").append(list);
     });

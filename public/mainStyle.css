@@ -93,7 +93,7 @@ p {
 h3 {
 	margin: 5px 15px;
 }
-div {
+.whiteDiv {
 	background-color: #fff;
 	border: none;
 	border-radius: 5px;
@@ -102,6 +102,9 @@ div {
 }
 .fittedDiv {
     display: inline-block;
+	margin: 5px;
+	background-color: #fff;
+	padding: 5px;
 }
 
 input {
