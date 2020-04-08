@@ -2,7 +2,9 @@ body {
 	font-family: helvetica;
 	background-color: #eee;
 }
-
+#tRight {
+	text-align: right;
+}
 form {
 	margin: 10px;
 	padding: 1px;
@@ -107,6 +109,7 @@ h3 {
 #boxList {
 	min-width: 250px;
 	background-color: #fff;
+	border-radius: 5px;
 	margin: 10px;
 }
 .grayLabel {

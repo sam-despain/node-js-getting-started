@@ -11,50 +11,51 @@
 			<form action="/postPC" method="post">
 				<table>
 					<tr>
-						<td>Case</td>
+						<td id="tRight">Case</td>
 						<td><select name="casing" onblur="loadTotal()" id="casing"></select></td>
 					</tr>
 					<tr>
-						<td>Cooler</td>
+						<td id="tRight">Cooler</td>
 						<td><select name="cooler" onblur="loadTotal()" id="cooler"></select></td>
 					</tr>
 					<tr>
-						<td>CPU</td>
+						<td id="tRight">CPU</td>
 						<td><select name="cpu" onblur="loadTotal()" id="cpu"></select></td>
 					</tr>
 					<tr>
-						<td>Graphics card</td>
+						<td id="tRight">Graphics card</td>
 						<td><select name="gpu" onblur="loadTotal()" id="gpu"><option value=0></option></select></td>
 					</tr>
 					<tr>
-						<td>Monitor</td>
+						<td id="tRight">Monitor</td>
 						<td><select name="monitor" onblur="loadTotal()" id="monitor"><option value=0></option></select></td>
 					</tr>
 					<tr>
-						<td>Motherboard</td>
+						<td id="tRight">Motherboard</td>
 						<td><select name="motherboard" onblur="loadTotal()" id="motherboard"></select></td>
 					</tr>
 					<tr>
-						<td>Operating system</td>
+						<td id="tRight">Operating system</td>
 						<td><select name="os" onblur="loadTotal()" id="os"><option value=0></option></select></td>
 					</tr>
 					<tr>
-						<td>Power supply</td>
+						<td id="tRight">Power supply</td>
 						<td><select name="psu" onblur="loadTotal()" id="psu"></select></td>
 					</tr>
 					<tr>
-						<td>Memory</td>
+						<td id="tRight">Memory</td>
 						<td><select name="ram" onblur="loadTotal()" id="ram"></select></td>
 					</tr>
 					<tr>
-						<td>Storage</td>
+						<td id="tRight">Storage</td>
 						<td><select name="storage" onblur="loadTotal()" id="storage"></select></td>
 					</tr>
 					<tr id="total">
-						<td><b>Total</b></td>
-						<td>$<input name="total" value="321.93" readonly></td>
+						<td id="tRight"><b>Total</b></td>
+						<td>$<input type="text" name="total" value="321.93" readonly></td>
 					</tr>
 					<tr>
+						<td></td>
 						<td><input type="submit" value="Create PC"></td>
 					</tr>
 				</table>
